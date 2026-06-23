@@ -1,29 +1,29 @@
 @model ASPDOTNETCOREEF_LoginUsingSession.Models.TblUser
 
 @{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "Register";
 }
 
-<h1>Create</h1>
+<h1>Register</h1>
 
 <h4>TblUser</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        @{
-            if(ViewBag.Message != null)
-            {
-                <div class="alert alert-danger" role="alert">
-                @ViewBag.Message
-                </div>
-            }
-            if(TempData != null)
-            {
-                <p style="color:forestgreen ">@TempData["SuccessMessage"]</p>
-            }
-        }
-        <form asp-action="Login">
+        <form asp-action="Register">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Age" class="control-label"></label>
+                <input asp-for="Age" class="form-control" />
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
 
             <div class="form-group">
                 <label asp-for="Email" class="control-label"></label>
@@ -37,13 +37,13 @@
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Login" class="btn btn-primary" />
+                <input type="submit" value="Register" class="btn btn-primary" />
             </div>
         </form>
-        <br />
-        <p>
-            <a asp-action="Register" asp-controller="Home">Sign Up</a>
-        </p>
     </div>
 </div>
+<div>
+    <a asp-action="Login">Login Form</a>
+</div>
+
 

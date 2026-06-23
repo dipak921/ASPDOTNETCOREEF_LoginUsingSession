@@ -66,6 +66,26 @@ namespace ASPDOTNETCOREEF_LoginUsingSession.Controllers
             return RedirectToAction("Login");
         }
 
+
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Register(TblUser user)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.TblUsers.Add(user);
+                await _context.SaveChangesAsync();
+                TempData["SuccessMessage"] = "Registration Succesfull . plase login";
+                return RedirectToAction("Login");
+            }
+           return View(user);
+            
+        }
+
         public IActionResult Privacy()
         {
             return View();
